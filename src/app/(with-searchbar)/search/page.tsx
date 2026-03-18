@@ -1,5 +1,5 @@
-import ClientComponent from "@/components/client-component";
-import ServerComponent from "@/components/server-component";
+import books from "@/mock/books.json";
+import BookItem from "@/components/book-item";
 
 export default async function Page({
   searchParams,
@@ -10,10 +10,9 @@ export default async function Page({
 
   return (
     <div>
-      Search 페이지: {q}
-      <ClientComponent>
-        <ServerComponent />
-      </ClientComponent>
+      {books.map((book) => (
+        <BookItem key={book.id} {...book} />
+      ))}
     </div>
   );
 }
